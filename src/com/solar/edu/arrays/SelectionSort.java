@@ -11,13 +11,10 @@ public class SelectionSort {
         }
 
         for (int sortedIndex = array.length - 1; sortedIndex > 0; sortedIndex--) {
-            int currentMax = Integer.MIN_VALUE;
-            int indexOfCurrentMax = -1;
+            int indexOfCurrentMax = 0;
             for (int unsortedIndex = 0; unsortedIndex <= sortedIndex; unsortedIndex++)
-                if (array[unsortedIndex] > currentMax) {
-                    currentMax = array[unsortedIndex];
+                if (array[unsortedIndex] > array[indexOfCurrentMax])
                     indexOfCurrentMax = unsortedIndex;
-                }
 
             Utils.swap(array, indexOfCurrentMax, sortedIndex);
         }
