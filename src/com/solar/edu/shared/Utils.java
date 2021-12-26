@@ -6,7 +6,7 @@ public class Utils {
 
         System.out.print("[ ");
         for (int el: array) System.out.print(el + ", ");
-        System.out.print("]");
+        System.out.println("]");
     }
 
     public static void swap(int[] array, int firstIndex, int secondIndex) {
