@@ -52,13 +52,13 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        int result = this.firstName.hashCode();
+        int hash = this.firstName.hashCode();
 
-        result = 31 * result + this.lastName.hashCode();
-        result = 67 * result * this.age;
-        result = 137 * result + this.id;
+        hash = 31 * hash + this.lastName.hashCode();
+        hash = 67 * hash * this.age;
+        hash = 137 * hash + this.id;
 
-        return result;
+        return hash;
     }
 
     @Override
