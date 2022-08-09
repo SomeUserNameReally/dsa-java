@@ -19,7 +19,7 @@ public class DoublyLinkedList<T> {
         }
 
         this.head = node;
-        size++;
+        this.size++;
     }
 
     public Node<T> removeFromFront() {
@@ -38,7 +38,7 @@ public class DoublyLinkedList<T> {
         this.head = this.head.getNext();
         temp.setNext(null);
 
-        size--;
+        this.size--;
         return temp;
     }
 
@@ -57,7 +57,7 @@ public class DoublyLinkedList<T> {
 
         this.tail = this.tail.getPrevious();
 
-        size--;
+        this.size--;
         node.setPrevious(null);
         return node;
     }
