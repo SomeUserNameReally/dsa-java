@@ -12,10 +12,11 @@ public class DoublyLinkedList<T> {
     public void addToFront(T o) {
         Node<T> node = new Node<>(o);
 
-        node.setNext(this.head);
-
         if (isEmpty()) this.tail = node;
-        else head.setPrevious(node);
+        else {
+            head.setPrevious(node);
+            node.setNext(this.head);
+        }
 
         this.head = node;
         size++;
