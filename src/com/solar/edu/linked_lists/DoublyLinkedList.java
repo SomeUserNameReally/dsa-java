@@ -41,6 +41,26 @@ public class DoublyLinkedList<T> {
         return temp;
     }
 
+    public Node<T> removeFromEnd() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node<T> node = this.tail;
+
+        if (this.tail.getPrevious() == null) {
+            this.head = null;
+        } else {
+            this.tail.getPrevious().setNext(null);
+        }
+
+        this.tail = this.tail.getPrevious();
+
+        size--;
+        node.setPrevious(null);
+        return node;
+    }
+
     public Node<T> getHead() {
         return this.head;
     }
