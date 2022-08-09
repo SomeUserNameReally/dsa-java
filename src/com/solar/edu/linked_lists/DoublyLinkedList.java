@@ -22,6 +22,19 @@ public class DoublyLinkedList<T> {
         this.size++;
     }
 
+    public void addToEnd(T o) {
+        Node<T> node = new Node<>(o);
+
+        if (isEmpty()) this.head = node;
+        else {
+            this.tail.setNext(node);
+            node.setPrevious(this.tail);
+        }
+
+        this.tail = node;
+        this.size++;
+    }
+
     public Node<T> removeFromFront() {
         if (isEmpty()) {
             return null;
