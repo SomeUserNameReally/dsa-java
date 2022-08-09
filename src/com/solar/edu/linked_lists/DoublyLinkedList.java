@@ -50,7 +50,7 @@ public class DoublyLinkedList<T> {
     }
 
     public boolean isEmpty() {
-        return this.head == null;
+        return this.head == null && this.tail == null;
     }
 
     public void printList() {
