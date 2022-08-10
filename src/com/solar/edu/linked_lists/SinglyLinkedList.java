@@ -1,5 +1,7 @@
 package com.solar.edu.linked_lists;
 
+import org.jetbrains.annotations.Nullable;
+
 public class SinglyLinkedList<T> {
     private Node<T> head;
     private int size;
@@ -43,7 +45,7 @@ public class SinglyLinkedList<T> {
         return temp;
     }
 
-    private Node<T> getTail() {
+    private @Nullable Node<T> getTail() {
         if (isEmpty()) {
             return null;
         }
