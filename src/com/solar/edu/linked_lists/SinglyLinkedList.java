@@ -17,6 +17,20 @@ public class SinglyLinkedList<T> {
         size++;
     }
 
+    public void addToEnd(T o) {
+        Node<T> tail = this.getTail();
+
+        if (tail == null) {
+            this.addToFront(o);
+            return;
+        }
+
+        Node<T> node = new Node<>(o);
+        tail.setNext(node);
+
+        size++;
+    }
+
     public Node<T> removeFromFront() {
         if (isEmpty()) {
             return null;
@@ -27,6 +41,20 @@ public class SinglyLinkedList<T> {
         temp.setNext(null);
         size--;
         return temp;
+    }
+
+    private Node<T> getTail() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node<T> cursor = this.head;
+
+        while (cursor.getNext() != null) {
+            cursor = cursor.getNext();
+        }
+
+        return cursor;
     }
 
     public int getSize() {
