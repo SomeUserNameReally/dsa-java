@@ -33,7 +33,7 @@ public class SinglyLinkedList<T> {
         size++;
     }
 
-    public Node<T> removeFromFront() {
+    public @Nullable Node<T> removeFromFront() {
         if (isEmpty()) {
             return null;
         }
@@ -45,7 +45,7 @@ public class SinglyLinkedList<T> {
         return temp;
     }
 
-    public Node<T> removeFromEnd() {
+    public @Nullable Node<T> removeFromEnd() {
         if (isEmpty()) {
             return null;
         }
