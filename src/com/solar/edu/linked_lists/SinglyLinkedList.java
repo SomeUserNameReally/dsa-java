@@ -45,6 +45,24 @@ public class SinglyLinkedList<T> {
         return temp;
     }
 
+    public Node<T> removeFromEnd() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node<T> penultimateNode = this.getPenultimateNode();
+
+        if (penultimateNode == null) {
+            return null;
+        }
+
+        Node<T> removedNode = penultimateNode.getNext();
+        penultimateNode.setNext(null);
+        this.size--;
+
+        return removedNode;
+    }
+
     private @Nullable Node<T> getTail() {
         if (isEmpty()) {
             return null;
@@ -53,6 +71,20 @@ public class SinglyLinkedList<T> {
         Node<T> cursor = this.head;
 
         while (cursor.getNext() != null) {
+            cursor = cursor.getNext();
+        }
+
+        return cursor;
+    }
+
+    private @Nullable Node<T> getPenultimateNode() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node<T> cursor = this.head;
+
+        while ((cursor.getNext() != null) && (cursor.getNext().getNext() != null)) {
             cursor = cursor.getNext();
         }
 
