@@ -1,16 +1,30 @@
 package com.solar.edu.dummy;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Employee {
+    private static Set<Integer> allEmployees;
+
     private String firstName;
     private String lastName;
     private int age;
     private int id;
 
     public Employee(String firstName, String lastName, int age, int id) {
+        if (Employee.allEmployees == null) {
+            Employee.allEmployees = new HashSet<>();
+        }
+
+        if (Employee.allEmployees.contains(id)) {
+            throw new IllegalArgumentException("Cannot instantiate distinct employees with matching id");
+        }
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.id = id;
+        Employee.allEmployees.add(id);
     }
 
     public String getFirstName() {
