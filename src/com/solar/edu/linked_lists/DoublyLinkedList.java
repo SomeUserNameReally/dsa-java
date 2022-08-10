@@ -75,6 +75,40 @@ public class DoublyLinkedList<T> {
         return node;
     }
 
+    public boolean addBefore(T _newO, T _existingO) {
+        if (isEmpty() || _existingO == null || _newO == null) {
+            return false;
+        }
+
+        Node<T> newO = new Node<>(_newO);
+        if (this.head.getO().equals(_existingO)) {
+            this.head.setPrevious(newO);
+            newO.setNext(this.head);
+            this.head = newO;
+        } else {
+            Node<T> cursor = this.head;
+            while (cursor != null && cursor.getNext() != null && !cursor.getNext().getO().equals(_existingO)) {
+                cursor = cursor.getNext();
+            }
+
+            // At the penultimate node
+            if (cursor == null || cursor.getNext() == null || !cursor.getNext().getO().equals(_existingO)) {
+                return false;
+            }
+
+            Node<T> existingNode = cursor.getNext();
+
+            cursor.setNext(newO);
+            newO.setPrevious(cursor);
+
+            existingNode.setPrevious(newO);
+            newO.setNext(existingNode);
+        }
+
+        size++;
+        return true;
+    }
+
     public Node<T> getHead() {
         return this.head;
     }
