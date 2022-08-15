@@ -6,6 +6,9 @@ public class Node<T> {
     private Node<T> previous;
 
     public Node(T o) {
+        if (o == null) {
+            throw new IllegalArgumentException("Cannot instantiate node with null value");
+        }
         this.o = o;
     }
 
