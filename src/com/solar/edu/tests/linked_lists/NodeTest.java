@@ -10,9 +10,7 @@ public class NodeTest {
 
     @Test
     void instantiatingWithNullThrows() {
-        Exception e = assertThrows(IllegalArgumentException.class, () -> {
-            new Node<>(null);
-        }, "Node instantiation with null value expected to fail but succeeded.");
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Node<>(null), "Node instantiation with null value expected to fail but succeeded.");
 
         assertTrue(e.getMessage().contains("Cannot instantiate"));
     }
