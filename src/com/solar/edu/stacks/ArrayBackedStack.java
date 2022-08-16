@@ -6,11 +6,15 @@ public class ArrayBackedStack<T> {
     private T[] stack;
     private int top;
 
-    public ArrayBackedStack(int capacity) {
+    public ArrayBackedStack(int initialCapacity) {
         // Alternative to: T[] a = (T[]) Array.newInstance(e, c);
-        @SuppressWarnings("unchecked") T[] a = (T[]) new Object[capacity];
+        @SuppressWarnings("unchecked") T[] s = (T[]) new Object[initialCapacity];
 
-        stack = a;
+        stack = s;
+    }
+
+    public ArrayBackedStack(T[] s) {
+        stack = s;
     }
 
     public void push(T e) {
