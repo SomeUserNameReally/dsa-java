@@ -12,7 +12,7 @@ public class ArrayBackedQueue<T> {
 
     public ArrayBackedQueue(int initialCapacity) {
         if (initialCapacity <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Cannot instantiate queue with non-positive length.");
         }
 
         @SuppressWarnings("unchecked") T[] q = (T[]) new Object[initialCapacity];
@@ -25,7 +25,7 @@ public class ArrayBackedQueue<T> {
         }
 
         if (q.length == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Cannot instantiate queue with array of zero length.");
         }
 
         queue = q;
@@ -115,6 +115,6 @@ public class ArrayBackedQueue<T> {
             }
         }
 
-        System.out.println("");
+        System.out.println();
     }
 }
