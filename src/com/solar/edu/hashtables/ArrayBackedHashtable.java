@@ -44,7 +44,9 @@ public class ArrayBackedHashtable<T> {
 
         if (hash != -1) {
             final var el = hashtable[hash].el();
-            rehashTable();
+            hashtable[hash] = null;
+
+            rehashTable(hashtable.length - 1);
 
             return el;
         }
@@ -82,16 +84,6 @@ public class ArrayBackedHashtable<T> {
 
         if (stopIndex == hash || hashtable[hash] == null || !hashtable[hash].key().equals(key)) return -1;
         return hash;
-    }
-
-    private void rehashTable() {
-        int size = 0;
-
-        for (StoredElement<T> el : hashtable) {
-            if (el != null) size++;
-        }
-
-        rehashTable(size);
     }
 
     private void rehashTable(int size) {
