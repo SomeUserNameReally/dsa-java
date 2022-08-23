@@ -66,7 +66,7 @@ public class ArrayBackedHashtable<T> {
             hash = (hash + 1) % hashtable.length;
         }
 
-        if (stopIndex == hash) return -1;
+        if (stopIndex == hash || hashtable[hash] == null || !hashtable[hash].key().equals(key)) return -1;
         return hash;
     }
 
