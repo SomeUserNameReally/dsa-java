@@ -1,7 +1,7 @@
 package com.solar.edu.hashtables;
 
 public class ArrayBackedHashtable<T> {
-    final private StoredElement<T>[] hashtable;
+    private StoredElement<T>[] hashtable;
 
     public ArrayBackedHashtable(int capacity) {
         @SuppressWarnings("unchecked") var ht = (StoredElement<T>[]) new StoredElement[capacity];
@@ -38,6 +38,19 @@ public class ArrayBackedHashtable<T> {
         }
     }
 
+    public T remove(String key) {
+        final var hash = find(key);
+
+        if (hash != -1) {
+            final var el = hashtable[hash].el();
+            rehashTable();
+
+            return el;
+        }
+
+        return null;
+    }
+
     public T get(String key) {
         var hashKey = find(key);
         if (hashKey == -1 || hashtable[hashKey] == null) return null;
@@ -68,6 +81,24 @@ public class ArrayBackedHashtable<T> {
 
         if (stopIndex == hash || hashtable[hash] == null || !hashtable[hash].key().equals(key)) return -1;
         return hash;
+    }
+
+    private void rehashTable() {
+        int size = 0;
+
+        for (StoredElement<T> el : hashtable) {
+            if (el != null) size++;
+        }
+
+        final var oldHashtable = hashtable;
+        @SuppressWarnings("unchecked") final var ht = (StoredElement<T>[]) new StoredElement[size];
+        hashtable = ht;
+
+        for (StoredElement<T> el : oldHashtable) {
+            if (el != null) {
+                put(el.key(), el.el());
+            }
+        }
     }
 
     public void printHashtable() {
