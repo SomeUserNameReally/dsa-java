@@ -3,8 +3,8 @@ package com.solar.edu.hashtables;
 public class ArrayBackedHashtable<T> {
     private StoredElement<T>[] hashtable;
 
-    public ArrayBackedHashtable(int capacity) {
-        @SuppressWarnings("unchecked") var ht = (StoredElement<T>[]) new StoredElement[capacity];
+    public ArrayBackedHashtable(int initialCapacity) {
+        @SuppressWarnings("unchecked") var ht = (StoredElement<T>[]) new StoredElement[initialCapacity];
         hashtable = ht;
     }
 
