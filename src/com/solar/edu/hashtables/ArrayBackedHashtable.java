@@ -32,7 +32,8 @@ public class ArrayBackedHashtable<T> {
         }
 
         if (occupied(hashKey)) {
-            System.out.println("Can't add element with this key: " + key);
+            rehashTable(hashtable.length * 2);
+            put(key, el);
         } else {
             hashtable[hashKey] = new StoredElement<>(key, el);
         }
@@ -90,6 +91,10 @@ public class ArrayBackedHashtable<T> {
             if (el != null) size++;
         }
 
+        rehashTable(size);
+    }
+
+    private void rehashTable(int size) {
         final var oldHashtable = hashtable;
         @SuppressWarnings("unchecked") final var ht = (StoredElement<T>[]) new StoredElement[size];
         hashtable = ht;
